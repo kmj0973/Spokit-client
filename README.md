@@ -1,69 +1,80 @@
-# React + TypeScript + Vite
+# Spokit-client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Spokit
 
-Currently, two official plugins are available:
+## 👥 Spokit Team
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🧠 안지철 — 팀 리더 / 백엔드 개발 / 프로젝트 관리자
 
-## Expanding the ESLint configuration
+🎨 김도경 — 프론트엔드 개발자
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+🎨 박요셉 — 프론트엔드 개발자
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
+⚙️ 이효림 — 백엔드 개발자
+
+---
+
+## 🌀 Git Flow 전략
+
+| 브랜치명    | 용도               | 비고                                      |
+| ----------- | ------------------ | ----------------------------------------- |
+| `master`    | 실제 배포 브랜치   | 메인 브랜치(운영), 코드 리뷰 이후 통합    |
+| `dev`       | 개발 통합 브랜치   | 메인 브랜치(개발)                         |
+| `feature/*` | 기능 개발 브랜치   |                                           |
+| `fix/*`     | 버그 수정 브랜치   |                                           |
+| `hotfix/*`  | 긴급 수정용 브랜치 |                                           |
+| `release/*` | 배포 준비용 브랜치 | 테스트 진행 후 `master`에 병합되는 브랜치 |
+
+---
+
+## 💬 커밋 컨벤션
+
+| 태그        | 설명                           |
+| ----------- | ------------------------------ |
+| `feat:`     | 새로운 기능 추가               |
+| `fix:`      | 버그 수정                      |
+| `refactor:` | 리팩토링 (기능 변경 없음)      |
+| `docs:`     | 문서 변경 (README 등)          |
+| `style:`    | 코드 스타일 변경 (포맷팅 등)   |
+| `test:`     | 테스트 코드 관련               |
+| `chore:`    | 빌드, 설정, 패키지 업데이트 등 |
+
+---
+
+## 📦 API 응답 포맷
+
+성공 응답:
+
+```JSON
   {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+    "success": true,
+    "data": { ... },
+    "message": "요청이 정상 처리되었습니다."
+  }
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+실패 응답:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```JSON
+{
+  "success": false,
+  "data": null,
+  "message": "유효하지 않은 요청입니다."
+}
 ```
+
+---
+
+## 🚦 HTTP 상태코드 통일
+
+| 코드 | 의미                  | 사용 예                               |
+| ---- | --------------------- | ------------------------------------- |
+| 200  | OK                    | 일반 요청 성공 (GET, POST 요청 등)    |
+| 201  | Created               | 자원 생성 완료 (POST 성공 시)         |
+| 204  | No Content            | 응답 없음 (DELETE 요청 등)            |
+| 400  | Bad Request           | 클라이언트 요청 오류 (유효성 실패 등) |
+| 401  | Unauthorized          | 인증 실패 (로그인 필요)               |
+| 403  | Forbidden             | 권한 없음 (비인가 요청)               |
+| 404  | Not Found             | 리소스 없음 (잘못된 ID 등)            |
+| 409  | Conflict              | 중복 충돌 (이메일 중복 등)            |
+| 500  | Internal Server Error | 서버 내부 에러 (처리 불가능한 예외)   |
