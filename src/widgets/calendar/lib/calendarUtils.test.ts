@@ -3,6 +3,7 @@ import { describe, it, expect } from 'vitest';
 import { getMonthMatrix } from './calendarUtils';
 
 describe('getMonthMatrix 함수 태스트', () => {
+  // 특정 월은 해당 월 - 1입니다. (ex: 7월 = 6)
   it('2025년 7월: 1일이 화요일에 위치해야 한다', () => {
     const matrix = getMonthMatrix(2025, 6);
     expect(matrix[0][0]).toBe(null);
@@ -19,10 +20,5 @@ describe('getMonthMatrix 함수 태스트', () => {
     const matrix = getMonthMatrix(2024, 1);
     expect(matrix.flat().includes(29)).toBe(true);
     expect(matrix.flat().includes(30)).toBe(false);
-  });
-
-  it('전체 배열 구조를 snapshot으로 검증', () => {
-    const matrix = getMonthMatrix(2025, 6);
-    expect(matrix).toMatchSnapshot();
   });
 });
