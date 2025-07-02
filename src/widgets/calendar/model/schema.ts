@@ -23,7 +23,7 @@ export const calendarFormSchema = z
           if (issue.input === undefined) return '시작시간은 필수로 입력해야합니다.';
         },
       })
-      .refine((val) => /^(0[1-9]|1[0-9]|2[0-4]):(10|20|30|40|50)$/.test(val), {
+      .refine((val) => /^(0[1-9]|1[0-9]|2[0-4]):(00|10|20|30|40|50)$/.test(val), {
         error: 'startTime은 HH:mm format을 따라야 합니다. (ex: 12:30)',
       }),
     endTime: z
@@ -32,7 +32,7 @@ export const calendarFormSchema = z
           if (issue.input === undefined) return '종료시간은 필수로 입력해야합니다.';
         },
       })
-      .refine((val) => /^(0[1-9]|1[0-9]|2[0-4]):(10|20|30|40|50)$/.test(val), {
+      .refine((val) => /^(0[1-9]|1[0-9]|2[0-4]):(00|10|20|30|40|50)$/.test(val), {
         error: 'endTime은 HH:mm format을 따라야 합니다. (ex: 12:30)',
       }),
     date: z.string().refine((val) => /^\d{4}-\d{2}-\d{2}$/.test(val), {
