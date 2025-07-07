@@ -1,6 +1,5 @@
 # Spokit-client
 
-# Spokit
 
 ## 👥 Spokit Team
 
