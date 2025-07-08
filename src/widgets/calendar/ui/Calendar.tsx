@@ -1,15 +1,10 @@
 import { getMonthMatrix } from '@/widgets/calendar/lib/calendarUtils';
+
 import { DAYS_KO } from '../model';
 import { useState } from 'react';
 import { CalendarForm } from './CalendarForm';
 import CalendarHeader from './CalendarHeader';
 
-// 첫 렌더링 = 당월
-// 이후 < >로 수정된 월이 표시될 것
-// 일정 입력 = 멤버, 메모, 시간(시작, 끝), 날짜(클릭 한 곳이 날짜로 들어가게)
-
-// TODO : REACT HOOK FORM + ZOD 로 유효성 검사 및 폼 제출 코드 작성 및 테스트 코드 작성
-// TODO : 일정 입력 목데이터 활용해서 기능 구현하기
 
 export default function Calendar() {
   const today = new Date();
