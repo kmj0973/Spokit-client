@@ -3,7 +3,7 @@ import { useAuthStore } from '../store/useAuthStore';
 
 export const axiosInstance = axios.create({
   baseURL: '',
-  headers: { 'Content-Tpye': 'application/json' },
+  headers: { 'Content-Type': 'application/json' },
   withCredentials: true,
 });
 
@@ -11,8 +11,8 @@ let refreshPromise: Promise<void> | null = null; //현재 진행 중인 refresh 
 
 async function refreshAccessToken() {
   if (!refreshPromise) {
-    //중복된 일시 기존 refreshPromise 리턴
-    refreshPromise = axios
+    //중복된 요청 일시 기존 refreshPromise 리턴
+    refreshPromise = axiosInstance
       .post('/auth/refresh', null, { withCredentials: true })
       .then((res) => {
         const token = res.data.accessToken;
@@ -41,7 +41,7 @@ axiosInstance.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
-    if (error.response?.status === 401 && !originalRequest._retry) {
+    if (error.response?.status === 401 && !originalRequest?._retry) {
       originalRequest._retry = true;
       try {
         await refreshAccessToken();
