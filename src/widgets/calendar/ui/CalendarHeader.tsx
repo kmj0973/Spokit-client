@@ -1,50 +1,30 @@
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { DAY_MONTH_WEEK } from '../model';
 import { format } from 'date-fns';
 import { ko } from 'date-fns/locale';
+import CalendarModeSelector from './CalendarModeSelector';
+import CalendarNav from './CalendarNav';
+import { type viewMode } from '../model';
 
 interface CalendarHeaderProps {
-  year: number;
-  month: number;
-  setYear: (year: number) => void;
-  setMonth: (month: number) => void;
+  baseDate: Date;
+  setBaseDate: (date: Date) => void;
+  mode: viewMode;
+  setMode: (mode: viewMode) => void;
 }
 
-export default function CalendarHeader({ year, month, setYear, setMonth }: CalendarHeaderProps) {
-  const handlePrevMonth = () => {
-    if (month === 0) {
-      setYear(year - 1);
-      setMonth(11);
-    } else {
-      setMonth(month - 1);
-    }
-  };
-
-  const handleNextMonth = () => {
-    if (month === 11) {
-      setYear(year + 1);
-      setMonth(0);
-    } else {
-      setMonth(month + 1);
-    }
-  };
-
-  const monthFormat = format(new Date(year, month), 'MMMM', { locale: ko }).padStart(3, '0');
-
+export default function CalendarHeader({
+  baseDate,
+  setBaseDate,
+  mode,
+  setMode,
+}: CalendarHeaderProps) {
+  const dateFormat = format(baseDate, 'yyyy-MM', { locale: ko });
   return (
-    <div className='flex items-end justify-between'>
-      <div className='flex gap-2 items-end'>
-        <h1 className='text-6xl font-bold text-center'>{monthFormat}</h1>
-        <div className='flex'>
-          <ChevronLeft size={48} onClick={handlePrevMonth} className='cursor-pointer' />
-          <ChevronRight size={48} onClick={handleNextMonth} className='cursor-pointer' />
-        </div>
+    <div className='pb-3 flex items-center justify-between' data-testid='calendar-header'>
+      <div className='flex-1'>
+        <CalendarModeSelector mode={mode} setMode={setMode} />
       </div>
-      <div className='flex gap-3 text-3xl font-bold'>
-        {DAY_MONTH_WEEK.map((d) => (
-          <span key={d}>{d}</span>
-        ))}
-      </div>
+      <h1 className='text-[#1A256E] text-title1'>{dateFormat}</h1>
+      <CalendarNav baseDate={baseDate} setBaseDate={setBaseDate} mode={mode} />
     </div>
   );
 }
