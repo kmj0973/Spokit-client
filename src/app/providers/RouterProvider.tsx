@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router';
-import ProtectedRoute from '@/feature/auth/ui/ProtectedRoute';
+import ProtectedRoute from '@/features/auth/ui/ProtectedRoute';
 
 import { LoginPage } from '@/pages/login/ui/LoginPage';
 import Calendar from '@/widgets/calendar/ui/Calendar';

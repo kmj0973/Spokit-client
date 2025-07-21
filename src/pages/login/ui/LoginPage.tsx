@@ -1,5 +1,5 @@
-import KakaoLoginButton from '@/feature/auth/ui/KakaoLoinButton';
-import LogoutButton from '@/feature/auth/ui/LogoutButton';
+import KakaoLoginButton from '@/features/auth/ui/KakaoLoinButton';
+import LogoutButton from '@/features/auth/ui/LogoutButton';
 
 export const LoginPage = () => {
   return (
