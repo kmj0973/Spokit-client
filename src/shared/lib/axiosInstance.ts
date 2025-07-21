@@ -3,7 +3,6 @@ import { useAuthStore } from '../store/useAuthStore';
 
 export const axiosInstance = axios.create({
   baseURL: '',
-  headers: { 'Content-Type': 'application/json' },
   withCredentials: true,
 });
 
@@ -47,7 +46,7 @@ axiosInstance.interceptors.response.use(
         await refreshAccessToken();
         return axiosInstance(originalRequest);
       } catch {
-        await axiosInstance.post('/auth/logout');
+        await axiosInstance.post('/logout');
         useAuthStore.getState().logout();
         return Promise.reject(error);
       }

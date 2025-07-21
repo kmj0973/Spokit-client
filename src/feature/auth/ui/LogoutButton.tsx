@@ -9,7 +9,6 @@ export default function LogoutButton() {
     try {
       await authApi.logout();
       logout();
-      console.log(useAuthStore.getState().user);
       console.log('로그아웃되었습니다.');
     } catch {
       console.log('로그아웃 실패');

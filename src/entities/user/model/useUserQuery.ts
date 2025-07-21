@@ -6,4 +6,5 @@ export const useUserQuery = () =>
     queryKey: ['user'],
     queryFn: userApi.getUserInfo,
     staleTime: 1000 * 60 * 5, // 5분 캐싱
+    retry: false,
   });
