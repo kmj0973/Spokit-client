@@ -7,7 +7,7 @@ export default function SidebarHeader() {
   };
   return (
     <div className='w-full mb-6 flex justify-between items-center'>
-      <div className='px-3 py-2 flex justify-center items-center gap-2 text-body2'>
+      <div className='px-3 py-2 flex justify-center items-center gap-2 text-body2-medium'>
         <img src={SampleImage} />
         <div>프로필</div>
       </div>

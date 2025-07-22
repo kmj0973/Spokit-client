@@ -1,5 +1,7 @@
+import Sidebar from './widgets/sidebar/ui/Sidebar';
+
 function App() {
-  return <div>main</div>;
+  return <Sidebar />;
 }
 
 export default App;
