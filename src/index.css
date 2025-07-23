@@ -47,6 +47,11 @@
   --color-cal-cell-muted-bg: var(--cal-cell-muted-bg);
   --color-cal-cell-muted-text: var(--cal-cell-muted-text);
   --color-cal-btn-bg: var(--cal-btn-bg);
+  /* 사이드바 관련 변수 */
+  --color-sidebar-bg: var(--sidebar-bg);
+  --color-sidebar-text-base: var(--sidebar-text-base);
+  --color-sidebar-text-accent: var(--sidebar-text-accent);
+  --color-sidebar-btn-cliked: var(--sidebar-btn-cliked);
 }
 
 :root {
@@ -90,6 +95,11 @@
   --cal-cell-muted-text: oklch(0.8266 0 0);
   --cal-days-bg: oklch(0.9663 0.0134 281.57);
   --cal-btn-bg: oklch(0.6033 0.1756 274.4);
+  /* 사이드바 관련 변수 */
+  --sidebar-bg: oklch(0.9913 0.0013 286.38);
+  --sidebar-text-base: oklch(0.2935 0.0018 286.29);
+  --sidebar-text-accent: oklch(0.6033 0.1756 274.4);
+  --sidebar-btn-cliked: oklch(0.9735 0.0054 274.97);
 }
 
 .dark {
