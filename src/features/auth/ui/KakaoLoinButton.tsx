@@ -1,6 +1,6 @@
 import { Button } from '@/shared/ui/shadcn/components/button';
 import { useAuthStore } from '@/shared/store/useAuthStore';
-import { userApi } from '@/entities/user/api/userApi';
+import { getCurrentUser } from '@/entities/user/api/requests';
 import { useNavigate } from 'react-router';
 
 export default function KakaoLoginButton() {
@@ -10,8 +10,8 @@ export default function KakaoLoginButton() {
 
   const handleKakaoLogin = async () => {
     try {
-      const data = await userApi.getUserInfo();
-      setUser({ userId: data.userId, nickname: data.nickname });
+      const data = await getCurrentUser();
+      setUser({ id: data.id, nickname: data.nickname });
       setAccessToken(data.accessToken);
       navigate('/calendar');
       console.log(useAuthStore.getState().accessToken);

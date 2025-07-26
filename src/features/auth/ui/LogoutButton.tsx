@@ -1,13 +1,13 @@
 import { Button } from '@/shared/ui/shadcn/components/button';
-import { authApi } from '../api/authApi';
+import { logout } from '../api/requests';
 import { useAuthStore } from '@/shared/store/useAuthStore';
 
 export default function LogoutButton() {
-  const logout = useAuthStore((state) => state.logout);
+  const setLogout = useAuthStore((state) => state.setLogout);
   const handleLogout = async () => {
     try {
-      await authApi.logout();
-      logout();
+      await logout();
+      setLogout();
       console.log(useAuthStore.getState().user);
 
       console.log('로그아웃되었습니다.');

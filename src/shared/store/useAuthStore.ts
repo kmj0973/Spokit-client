@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
 type User = {
-  userId: string | null;
+  id: string | null;
   nickname: string | null;
 };
 
@@ -10,7 +10,7 @@ type AuthState = {
   user: User | null;
   setAccessToken: (token: string) => void;
   setUser: (user: User) => void;
-  logout: () => void;
+  setLogout: () => void;
 };
 
 export const useAuthStore = create<AuthState>((set) => ({
@@ -18,5 +18,5 @@ export const useAuthStore = create<AuthState>((set) => ({
   user: null,
   setAccessToken: (token) => set({ accessToken: token }),
   setUser: (user) => set({ user }),
-  logout: () => set({ accessToken: null, user: null }),
+  setLogout: () => set({ accessToken: null, user: null }),
 }));
