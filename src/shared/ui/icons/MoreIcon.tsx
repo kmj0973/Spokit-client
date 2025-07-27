@@ -2,7 +2,14 @@ import type { IconProps } from './types';
 
 export const MoreIcon = ({ color = '#2c2c2d' }: IconProps) => {
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'>
+    <svg
+      data-testid='MoreIcon'
+      xmlns='http://www.w3.org/2000/svg'
+      width='24'
+      height='24'
+      viewBox='0 0 24 24'
+      fill='none'
+    >
       <path
         d='M10.5 6C10.5 6.82843 11.1716 7.5 12 7.5C12.8284 7.5 13.5 6.82843 13.5 6C13.5 5.17157 12.8284 4.5 12 4.5C11.1716 4.5 10.5 5.17157 10.5 6Z'
         fill={color}

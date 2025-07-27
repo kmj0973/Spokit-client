@@ -17,7 +17,6 @@ interface Props {
 }
 
 const SidebarSection = memo(({ title, pages, selectedPageId, onSelectPage, onAddPage }: Props) => {
-  console.log(`렌더링됨: ${title}`); // ✅ 디버깅용
   return (
     <div className='w-full mb-4 flex flex-col'>
       <div className='mx-3 my-4 text-label-medium'>{title}</div>

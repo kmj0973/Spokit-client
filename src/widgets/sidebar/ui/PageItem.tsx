@@ -13,6 +13,7 @@ const PageItem = memo(
   ({ id, title, selected, onSelect }: PageItemProps) => {
     return (
       <div
+        data-testid='page-item-button'
         key={id}
         onClick={() => onSelect(id)}
         className={`w-full rounded-[10px] px-3 py-2 flex justify-between items-center cursor-pointer ${
