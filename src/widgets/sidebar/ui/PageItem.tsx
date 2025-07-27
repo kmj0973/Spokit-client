@@ -18,7 +18,7 @@ const PageItem = memo(
         onClick={() => onSelect(id)}
         className={`w-full rounded-[10px] px-3 py-2 flex justify-between items-center cursor-pointer ${
           selected
-            ? 'debossed bg-sidebar-bg text-sidebar-text-accent'
+            ? 'debossed bg-sidebar-btn-cliked text-sidebar-text-accent'
             : 'text-sidebar-text-base hover:bg-gray-100'
         }`}
       >
